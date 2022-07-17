@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Mission to Mars</title>
+       <!-- CSS only -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+
+  </head>
+  <body style="background-image: linear-gradient(#bb3e03, #001219);">
+    <div class="container ">
+      <!-- Add Jumbotron to Header -->
+      <div class="jumbotron text-center">
+        <h1>Mission to Mars</h1>
+        <!-- Add a button to activate scraping script -->
+        <p><a class="btn btn-dark btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+      </div>
+      <!-- Add section for Mars News -->
+      <div class="row" id="mars-news">
+        <div class="col-md-12">
+          <div class="media">
+            <div class="media-body">
+              <h2>Latest Mars News</h2>
+              <h4 class="media-heading">{{ mars.news_title }}</h4>
+              <p>{{ mars.news_paragraph }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Section for Featured Image and Facts table -->
+      <div class="row justify-content-md-center" id="mars-featured-image">
+        <div class="col-md-8">
+          <h2>Featured Mars Image</h2>
+          <img
+            src="{{mars.featured_image }}"
+            class="img-responsive"
+            alt="Responsive image"
+          />
+        </div>
+        <div class="col-md-4">
+          <!-- Mars Facts -->
+          <div class="row justify-content-md-center" id="mars-facts">
+
+            <h4>Mars Facts</h4>
+            <table class="table table-striped">
+              <thead>
+               
+              </thead>
+              <tbody>
+                {{ mars.facts | safe }}
+              </tbody>
+              
+            </table>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-4 bg-dark rounded"><br>
+      <h2 class="text-center">Mars Hemispheres</h2><br>
+      <!-- <hr> -->
+      
+        <div class = "row">
+          <div class="col-md-6">
+            <div class="card" style="background-image: linear-gradient(#bb3e03, #ca6702);">
+              <img class="card-img-top img-fluid img-thumbnail" src={{ mars.image1 }} alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">{{ mars.title1 }}</h5>
+                <a href="#" class="btn btn-primary">Fullsize image</a>
+              </div>
+              
+          </div>
+       
+       </div>
+       <div class="col-md-6">
+        <div class="card">
+          <img class="card-img-top img-fluid img-thumbnail" src={{ mars.image3 }} alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{ mars.title3 }}</h5>
+            <a href="#" class="btn btn-primary">Fullsize image</a>
+          </div>
+        </div>
+        <br>
+      </div>
+
+      
+        <div class="col-md-6">
+          <div class="card">
+            <img class="card-img-top img-fluid img-thumbnail" src={{ mars.image3 }} alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{ mars.title3 }}</h5>
+              <a href="#" class="btn btn-primary">Fullsize image</a>
+            </div>
+            
+        </div>
+     
+     </div>
+     <div class="col-md-6">
+      <div class="card">
+        <img class="card-img-top img-fluid img-thumbnail" src={{ mars.image4 }} alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{ mars.title4 }}</h5>
+          <a href="http://www.google.com" target="_blank" class="btn btn-primary">Fullsize image</a>
+        </div>
+      </div>
+      <br>
+    
+
+
+        
+
+      </div><br><br>
+
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+  </body>
+</html>
