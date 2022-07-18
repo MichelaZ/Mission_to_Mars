@@ -1,18 +1,10 @@
-# Mission_to_Mars
-![Bootstrap](https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white) 
-![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white) 
-![Jupyter Notebook](https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=for-the-badge&logo=jupyter&logoColor=white) 
-![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
-![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+# Mission to Mars
 
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
-![Selenium](https://img.shields.io/badge/-selenium-%43B02A?style=for-the-badge&logo=selenium&logoColor=white)
-## Purpose
 
 ## Methods
  During the module I built out an app and started the scraper in jupyter notebooks so it would grab the news title, news paragraph, featured image and a data frame comparing earth and mars facts. 
 ### Deliverable 1
-For deliverable 1 I used Jupyter notebooks to get images and labels for Mars’ four hemispheres. The code can be viewed in the [Mission_to_Mars_starter_code]( https://github.com/MichelaZ/Mission_to_Mars/blob/main/Mission_to_Mars_Challenge_starter_code.ipynb) file. I’ll go into the code more in the section on Deliverable 2. Here are the outputs:
+For deliverable 1 I used Jupyter notebooks to get images and labels for Mars’ four hemispheres. The code can be viewed in the [Mission_to_Mars_starter_code]( https://github.com/MichelaZ/Mission_to_Mars/blob/main/Mission_to_Mars_Challenge_starter_code.ipynb) file. Here are the outputs:
 ```
 [{'img_url': 'https://marshemispheres.com/images/f5e372a36edfa389625da6d0cc25d905_cerberus_enhanced.tif_full.jpg',
   'title': 'Cerberus Hemisphere Enhanced'},
@@ -23,14 +15,20 @@ For deliverable 1 I used Jupyter notebooks to get images and labels for Mars’ 
  {'img_url': 'https://marshemispheres.com/images/b3c7c6c9138f57b4756be9b9c43e3a48_valles_marineris_enhanced.tif_full.jpg',
   'title': 'Valles Marineris Hemisphere Enhanced'}]
 ```
-![Cerberus Hemisphere Enhanced]()
-![Schiaparelli Hemisphere Enhanced]()
-![Syrtis Major Hemisphere Enhanced]()
-![Valles Marineris Hemisphere Enhanced]()
+<details>
+<summary>View Images</summary>
+
+![Cerberus Hemisphere Enhanced](https://github.com/MichelaZ/Mission_to_Mars/blob/main/Submission/img1.png)
+![Schiaparelli Hemisphere Enhanced](https://github.com/MichelaZ/Mission_to_Mars/blob/main/Submission/img2.png)
+![Syrtis Major Hemisphere Enhanced](https://github.com/MichelaZ/Mission_to_Mars/blob/main/Submission/img3.png)
+![Valles Marineris Hemisphere Enhanced](https://github.com/MichelaZ/Mission_to_Mars/blob/main/Submission/img1.png)
+</details>
 
 ### Deliverable 2
 In deliverable 2 I exported the jupyter notebook file to a python file and refactored the code so that I could use it with my flask app. 
-#### Scraper
+<details>
+<summary><b>Scraper</b></summary>
+
 1. I imported the dependencies.
 ```
 from splinter import Browser
@@ -166,7 +164,10 @@ url = 'https://spaceimages-mars.com'
                     }
         return mars_data
 ```
-#### Flask App
+</details>
+
+<details>
+<summary><b>Flask App</b></summary>
 
 1.
 ```
@@ -204,9 +205,14 @@ def scrape():
 if __name__ == "__main__":
    app.run(debug=True)
 ```
+</details>
+
 ### Deliverable 3
 In deliverable 3 I used html and bootstraps to format my webpage and make it responsive. 
-1. I updated the bootstraps to a more recent version. 
+
+<details>
+  <summary>1. I updated the bootstraps to a more recent version.</summary>
+  
 ```
 <!DOCTYPE html>
 <html lang="en">
@@ -222,7 +228,10 @@ In deliverable 3 I used html and bootstraps to format my webpage and make it res
       crossorigin="anonymous"
     />
 ```
-2. I used an image for the background of the Jumbotron and made the background a gradient. I used badges to style the rest of the titles and I added the news title and paragraph to a card. 
+</details>
+<details>
+<summary>2. I used an image for the background of the Jumbotron and made the background a gradient. I used badges to style the rest of the titles and I added the news title and paragraph to a card.</summary>
+
 ```
 </head>
   <body style="background-image: linear-gradient(#fec89a, #001219);">
@@ -287,8 +296,11 @@ In deliverable 3 I used html and bootstraps to format my webpage and make it res
       </div>
     </div>
 ```
-“”3. I added the hemisphere images to the page. The buttons on the image cards for the hemispheres open the image in a new tab.”” 
-#Region
+</details>
+
+<details>
+<summary>3. I added the hemisphere images to the page. The buttons on the image cards for the hemispheres open the image in a new tab.</summary>
+
 ```
     <div class="container mt-4 bg-dark rounded"><br>
       <h2 class="text-center text-white">Mars Hemispheres</h2><br>
@@ -341,17 +353,44 @@ In deliverable 3 I used html and bootstraps to format my webpage and make it res
 <br>
   </body>
 </html>
-#End Region
-#####Desktop View
-![Desktop Version]()
+```
+</details>
 
-##### Mobile View
-![]()
-![]()
-![]()
-![]()
+<details>
+<summary><b>Desktop View</b></summary>
+
+![Desktop Version](https://github.com/MichelaZ/Mission_to_Mars/blob/main/Resources/desktop_full.png)
+</details>
+
+<details>
+<summary><b>Mobile View</b></Summary>
+
+![](https://github.com/MichelaZ/Mission_to_Mars/blob/main/Resources/mobile1.png)
+
+![](https://github.com/MichelaZ/Mission_to_Mars/blob/main/Resources/mobile2.png)
+
+![](https://github.com/MichelaZ/Mission_to_Mars/blob/main/Resources/mobile3.png)
+
+![](https://github.com/MichelaZ/Mission_to_Mars/blob/main/Resources/mobile4.png)
+
+![](https://github.com/MichelaZ/Mission_to_Mars/blob/main/Resources/mobile5.png)
+</details>
+
+
 
 #### Resources:
-[Badges](ileriayo.github.io/markdown-badges/)
-[Jumbotron Background](https://mediaproxy.salon.com/width/1200/https://media.salon.com/2022/05/mars-canyons-0517221.jpg)
+- [Badges](ileriayo.github.io/markdown-badges/)
+- [Jumbotron Background](https://mediaproxy.salon.com/width/1200/https://media.salon.com/2022/05/mars-canyons-0517221.jpg)
+- [Scraped News](https://redplanetscience.com/)
+- [Scraped Featured Image](https://spaceimages-mars.com)
+- [Scraped Facts](https://galaxyfacts-mars.com)
+- [Scraped Hemispheres](https://marshemispheres.com/)
+
+![Bootstrap](https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white) 
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![Jupyter Notebook](https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=for-the-badge&logo=jupyter&logoColor=white) 
+![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![Selenium](https://img.shields.io/badge/-selenium-%43B02A?style=for-the-badge&logo=selenium&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white) 
 
