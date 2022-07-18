@@ -16,20 +16,31 @@ For deliverable 1 I used Jupyter notebooks to get images and labels for Mars’ 
   'title': 'Valles Marineris Hemisphere Enhanced'}]
 ```
 <details>
-<summary>View Images</summary>
+<summary>Cerberus Hemisphere Enhanced</summary>
 
 ![Cerberus Hemisphere Enhanced](https://github.com/MichelaZ/Mission_to_Mars/blob/main/Submission/img1.png)
+ </details>
+ <details>
+<summary>Schiaparelli Hemisphere Enhance</summary>
+ 
 ![Schiaparelli Hemisphere Enhanced](https://github.com/MichelaZ/Mission_to_Mars/blob/main/Submission/img2.png)
+ </details>
+ <details>
+<summary>Syrtis Major Hemisphere Enhanced</summary>
+ 
 ![Syrtis Major Hemisphere Enhanced](https://github.com/MichelaZ/Mission_to_Mars/blob/main/Submission/img3.png)
+ </details>
+ <details>
+<summary>Valles Marineris Hemisphere Enhanced</summary>
 ![Valles Marineris Hemisphere Enhanced](https://github.com/MichelaZ/Mission_to_Mars/blob/main/Submission/img1.png)
 </details>
 
 ### Deliverable 2
 In deliverable 2 I exported the jupyter notebook file to a python file and refactored the code so that I could use it with my flask app. 
+#### Scraper
 <details>
-<summary><b>Scraper</b></summary>
-
-1. I imported the dependencies.
+ <summary>1. I imported the dependencies.</summary>
+ 
 ```
 from splinter import Browser
 from bs4 import BeautifulSoup as soup
@@ -37,7 +48,11 @@ import pandas as pd
 from webdriver_manager.chrome import ChromeDriverManager
 import time
 ```
-2. I created a class called ScraperHelper, defined a function called scrape_all, set the executable path and initialized Splinter.
+</details>
+
+ <details>
+<summary>2. I created a class called ScraperHelper, defined a function called scrape_all, set the executable path and initialized Splinter.</summary>
+ 
 ```
 class ScraperHelper():
     def scrape_all():
@@ -45,7 +60,11 @@ class ScraperHelper():
         browser = Browser('chrome', **executable_path, headless=True)
     
 ```
-3. I grabbed the news title and news paragraph.
+ </details>
+ 
+ <details>
+ <summary>3. I grabbed the news title and news paragraph.</summary>
+ 
 ```
         url = 'https://redplanetscience.com/'
         browser.visit(url)
@@ -61,7 +80,11 @@ class ScraperHelper():
         news_title = slide_elem.find('div', class_='content_title').get_text()
         news_paragraph = slide_elem.find('div', class_='article_teaser_body').get_text()
 ```
-4. I got the featured image
+ </details>
+ 
+<details>
+<summary>4. I got the featured image</summary>
+  
 ```
 url = 'https://spaceimages-mars.com'
         browser.visit(url)
@@ -80,7 +103,10 @@ url = 'https://spaceimages-mars.com'
         # Use the base url to create an absolute url
         featured_image = f'https://spaceimages-mars.com/{img_url_rel}'
 ```
-5. I created a dataframe with the mars facts, converted the table to HTML and formated it.
+ </details>
+ <details>
+<summary>5. I created a dataframe with the mars facts, converted the table to HTML and formated it.</summary>
+  
 ```        # ### Mars Facts
         facts = pd.read_html('https://galaxyfacts-mars.com')[0]
         facts.columns=['Description', 'Mars', 'Earth']
@@ -88,8 +114,12 @@ url = 'https://spaceimages-mars.com'
         #Convert to html add table formatting
         facts = facts.to_html(classes=["table table-dark table-striped table-hover table-responsive"], header=True)
 ```
-6. After setting up the parser and visiting the browser. I found the parent item. I declared a list to store the image title and URLs for the hemispheres.
-```
+ </details>
+ 
+ <details>
+<summary>6. After setting up the parser and visiting the browser. I found the parent item. I declared a list to store the image title and URLs for the hemispheres.</summary>
+  
+ ```
 # Use browser to visit the URL 
         url = 'https://marshemispheres.com/'
         browser.visit(url)
@@ -103,7 +133,11 @@ url = 'https://spaceimages-mars.com'
         # Create a list to hold the images and titles.
         hemisphere_image_urls = []
 ```
-7. I used a a for loop to grab all of the URLs and title and append them to the list.
+ </details>
+ 
+ <details>
+<summary>7. I used a a for loop to grab all of the URLs and title and append them to the list.</summary>
+ 
 ```
      # for loop to retrieve the image urls and titles for each hemisphere.
         for item in items:
@@ -128,8 +162,11 @@ url = 'https://spaceimages-mars.com'
         #Quit the browser
         browser.quit()
 ```
-
-8. I declared values get each URl for my HTML.
+</details>
+ 
+ <details>
+  <summary>8. I declared values get each URl for my HTML.</summary>
+  
 ```
 #init variables for each hemisphere image
         title1 = hemisphere_image_urls[0]["title"]
@@ -144,8 +181,10 @@ url = 'https://spaceimages-mars.com'
         title4 = hemisphere_image_urls[3]["title"]
         image4 = hemisphere_image_urls[3]["img_url"]
 ```
-
-9. I added all my variables for the data I want to display on the webpage to a dictionary.
+ </details>
+ 
+<details>
+ <summary>9. I added all my variables for the data I want to display on the webpage to a dictionary.</summary>
 ```
         mars_data = {
                     "news_title": news_title,
@@ -165,29 +204,41 @@ url = 'https://spaceimages-mars.com'
 ```
 </details>
 
-<details>
-<summary><b>Flask App</b></summary>
+#### Flask App
 
-1. Import dependecies and the scraperhelper class from the scraping file.
+<details>
+ <summary>1. Import dependecies and the scraperhelper class from the scraping file.</summary>
+ 
 ```
 from flask import Flask, render_template, redirect, url_for
 from flask_pymongo import PyMongo
 from scraping import ScraperHelper
 ```
-2. Set up the connection to mongo.
+ </details>
+ <details>
+  <summary>2. Set up the connection to mongo.</summary>
+  
 ```
 app = Flask(__name__)
 app.config["MONGO_URI"] = "mongodb://localhost:27017/mars_app"
 mongo = PyMongo(app)
 ```
-3. Sets the routes so that the template can find the data.
+ </details>
+ 
+ <details>
+  <summary>3. Sets the routes so that the template can find the data.</summary>
+  
 ```
 @app.route("/")
 def index():
    mars_data = mongo.db.mars_detail.find_one()
    return render_template("index.html", mars=mars_data)
 ```
-4. Flask initializes the scraper to gather the data and add it to the mongodb.
+ </details>
+ 
+ <details>
+  <summary>4. Flask initializes the scraper to gather the data and add it to the mongodb.</summary>
+  
 ```
 @app.route("/scrape")
    
